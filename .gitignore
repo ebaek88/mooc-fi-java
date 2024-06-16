@@ -1,0 +1,11 @@
+mooc-java-programming-i/course_config.toml
+*.yml
+*.xml
+*.txt
+*.class
+*.lst
+*.json
+*.csv
+mooc-java-programming-ii/part14-Part14_07.Collage/monalisa.png
+mooc-java-programming-ii/part14-Part14_02.FinnishParties/partiesdata.tsv
+mooc-java-programming-ii/part14-Part14_08.Hurray/Applause-Yannick_Lemieux.wav
