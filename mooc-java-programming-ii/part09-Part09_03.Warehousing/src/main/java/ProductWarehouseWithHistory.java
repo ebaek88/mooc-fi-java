@@ -1,7 +1,11 @@
 public class ProductWarehouseWithHistory extends ProductWarehouse {
   
   private ChangeHistory history; // variable to store change history
-  // private double balance; //if you create the same variable in the subclass even if you inherit it from the superclass, they are recognized as distinct
+  // private double balance; //if you create the same variable in the subclass even if you inherit it from the superclass, they are recognized as distinct.
+  // in this case the variable in the superclass should be used in order for super() methods to work properly in the overriding methods.
+  // the reason is that if there are two variables with the same name, one in the superclass and one in the subclass,
+  // when a method uses the variable, it uses the variable in which the method is defined.
+
   //constructor
   public ProductWarehouseWithHistory(String productName, double capacity, double initialBalance) {
     super(productName, capacity); //uses the constructor of ProductWarehouse

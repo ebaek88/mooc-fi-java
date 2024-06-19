@@ -3,7 +3,7 @@
 public class Warehouse {
 
     private double capacity;
-    protected double balance;
+    protected double balance; //changed from private to protected in order for subclass ProductWarehouseWithHistory to use super() within its overriding methods
 
     public Warehouse(double capacity) {
         if (capacity > 0.0) {
