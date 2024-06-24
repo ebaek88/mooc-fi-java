@@ -1,5 +1,6 @@
 
 import java.util.ArrayList;
+import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
 public class Divisible {
@@ -19,8 +20,16 @@ public class Divisible {
     }
 
     public static ArrayList<Integer> divisible(ArrayList<Integer> numbers) {
+        // Alternative solution : implemented functional interfaces of Predicate and used their default function or()
+        Predicate<Integer> divisibleByThree = e -> e % 3 == 0;
+        Predicate<Integer> divisibleByTwo = e -> e % 2 == 0;
+        Predicate<Integer> divisibleByFive = e -> e % 5 == 0;
+        // same as
+        // ArrayList<Integer> result = numbers.stream()
+        //                                 .filter(e -> e % 2 == 0 || e % 3 == 0 || e % 5 == 0)
+        //                                 .collect(Collectors.toCollection(() -> new ArrayList<>()));
         ArrayList<Integer> result = numbers.stream()
-                                        .filter(e -> e % 2 == 0 || e % 3 == 0 || e % 5 == 0)
+                                        .filter(divisibleByTwo.or(divisibleByThree).or(divisibleByFive))
                                         .collect(Collectors.toCollection(() -> new ArrayList<>()));
         return result;
     }
