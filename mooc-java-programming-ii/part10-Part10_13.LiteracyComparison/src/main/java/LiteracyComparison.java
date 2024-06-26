@@ -10,21 +10,28 @@ public class LiteracyComparison {
     
     public static void main(String[] args) {
       // First read the csv file and store each row into a List<String>
-      String filePath = "/home/euihyunbaek88/.local/share/tmc/vscode/mooc-java-programming-ii/part10-Part10_13.LiteracyComparison/literacy.csv";  // The absolute file path
-      
+      String filePath = "literacy.csv";  // You can put the relative file path as well
+      List<Literacy> literacyList = readFromCSV(filePath); // Reads data from the csv file and converts it into Literacy object list
+      // From the literacy list, sort by literacy rate and print the contents from the lowest to the highest
+      literacyList.stream() // Opens a stream
+                  .sorted() // Sort the stream as defined by compareTo method implemented in Literacy class
+                  .forEach(System.out::println);  // Prints each Literacy object from the list as defined by toString method in Literacy class
     }
 
+    // Method for reading a CSV file and extract relevant data into Literacy objects, which are then stored in a List
     public static List<Literacy> readFromCSV (String filePath) {
       List<Literacy> result;
       try {
-        result = Files.lines(Paths.get(filePath))
-                      .map(row -> row.split(","))
-                      .filter(info -> info.length >= 5)
-                      .map(info -> new Literacy(info[3].trim(), info[2].trim().substring(0, indexOf(" ")), Integer.valueOf(index[4].trim()), Double.valueOf(index[5].trim())))
-                      .collect(Collectors.toCollection(ArrayList::new));
-      
+        result = Files.lines(Paths.get(filePath)) // Opens a stream, reads each line, stores each line in the stream as a string
+                      .map(row -> row.split(",")) // Splits each string by comma
+                      .filter(info -> info.length >= 5) // Leaves out "contaminated" data by filtering out String arrays having less than 5 elements
+                      .map(info -> new Literacy(info[3].trim(), (info[2].trim().split(" "))[0], Integer.valueOf(info[4].trim()), Double.valueOf(info[5].trim()))) // Maps each String array into a Literacy object. Each element needs to be trimmed first.
+                      .collect(Collectors.toCollection(ArrayList::new));  // Stores Literacy objects into an ArrayList
+        return result;
       } catch (Exception e) {
-        // TODO: handle exception
+        System.out.println(e.getMessage());
       }
-    }
-}
+      result = new ArrayList<>();
+      return result;
+    }//method
+}//class
