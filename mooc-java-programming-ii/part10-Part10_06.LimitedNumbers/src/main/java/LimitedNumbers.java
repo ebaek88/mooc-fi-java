@@ -16,6 +16,7 @@ public class LimitedNumbers {
             }
             intList.add(input); // Otherwise, the input is added to the list
         }
+        scanner.close();  // Closes scanner
 
         // Filter out the numbers between 1 and 5 of the list by Stream operations
         // and print out the results line by line
