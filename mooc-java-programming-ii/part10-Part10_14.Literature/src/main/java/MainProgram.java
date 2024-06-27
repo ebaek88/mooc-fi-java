@@ -22,7 +22,7 @@ public class MainProgram {
         // Opens a stream and prints out all the books in the list
         System.out.println("Books:");
         bookList.stream().forEach(System.out::println);
-    }
+    }//main
 
     // Method for adding books to the list
     public static List<Book> addBooks(List<Book> bookList, Scanner scanner) {
@@ -41,5 +41,5 @@ public class MainProgram {
       }
 
       return bookList;
-    }
-}
+    }//method
+}//class
