@@ -4,6 +4,10 @@ public class Calculator {
 
     public int factorial(int num) {
 
+        if (num < 0) {
+            throw new IllegalArgumentException("The number should be non-negative");
+        }
+
         int answer = 1;
         for (int i = 1; i <= num; i++) {
             answer *= i;
@@ -14,6 +18,10 @@ public class Calculator {
 
     public int binomialCoefficent(int setSize, int subsetSize) {
 
+        if (setSize < 0 || subsetSize < 0 || subsetSize > setSize) {
+            throw new IllegalArgumentException(
+                    "The parameters should be non-negative and the subset size should not exceed the set size.");
+        }
         int numerator = factorial(setSize);
         int denominator = factorial(subsetSize) * factorial(setSize - subsetSize);
 
