@@ -32,7 +32,7 @@ public class TemperatureSensor implements Sensor {
       throw new IllegalStateException("The sensor must be turned on first to read temperature");
     }
 
-    int randomTemperature = (new Random().nextInt(61) - 30);
-    return randomTemperature;
+    temperature = (new Random().nextInt(61) - 30);
+    return temperature;
   }
 }// class
